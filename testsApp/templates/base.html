@@ -1,0 +1,26 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DB Translations Test Application</title>
+</head>
+<body>
+    <section id="header">{% include '_changeLanguage.html' %}</section>
+    <section id="content">
+        {% block content %}
+            <ul>{% trans 'Avaiable applications' %}:</ul>
+            <ul>
+                {% for app in avaiable_apps %}
+                    <li><a href="{{ app.url }}">{{ app.name }}</a></li>
+                {%  endfor %}
+            </ul>
+        {% endblock content %}
+    </section>
+
+    <section id="footer">
+
+    </section>
+
+</body>
+</html>
