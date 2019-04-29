@@ -14,10 +14,3 @@ class TranslationAdminForm(ModelForm):
         help_texts = {
             'translation': 'asddsa',
         }
-
-    def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
-                 label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None):
-        super().__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
-                         use_required_attribute)
-
-

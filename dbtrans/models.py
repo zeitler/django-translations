@@ -97,6 +97,7 @@ class TranslatedField(models.Model):
         obj = TranslatedField.objects.create(ct=ct, obj_id=obj_id, field=field)
         obj.add_new_translation()
 
+
 def get_translation_permissions():
         from .functions import avaiable_languages_without_default
         langs = avaiable_languages_without_default()
@@ -143,11 +144,6 @@ class Translation(models.Model):
     def change(self):
         self.updated = False
         super().save()
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-
-        super().save(force_insert, force_update, using, update_fields)
 
     def exist(self):
         try:

@@ -1,7 +1,5 @@
 from .functions import *
 from django.db import models
-from .models import TranslatedField
-from django.contrib.contenttypes.models import ContentType
 
 
 LANG = 'l'

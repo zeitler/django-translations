@@ -5,8 +5,6 @@ from django.contrib.contenttypes.models import ContentType
 
 
 def avaiable_languages_without_default():
-    # print(get_avaiable_languages())
-    # print([get_verbose_language(l) for l in get_avaiable_languages()])
     return [(l.lower(), get_verbose_language(l)) for l in get_avaiable_languages() if l != default_language()]
 
 
@@ -45,7 +43,6 @@ def check_if_translations_were_created():
     from .models import TranslatedField
     activate(settings.LANGUAGE_CODE)
     new = 0
-    # for model in [m for m in apps.get_models() if getattr(m, 'translated_fields', None) != None]:
     for model in [m for m in apps.get_models() if getattr(m, 'translated_fields', None)]:
         for field in model.translated_fields:
             try:
@@ -61,4 +58,3 @@ def check_if_translations_were_created():
                         new += 1
             except Exception as e:
                 print(e)
-    print('Criadas %s traduções' % new)

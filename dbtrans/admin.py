@@ -11,7 +11,7 @@ from .Admin.forms import *
 class TranslationInline(admin.TabularInline):
     model = Translation
     readonly_fields = ('verbose_lang_code', 'updated',)
-    fields = [('verbose_lang_code', 'translation'), ]# 'updated')]
+    fields = [('verbose_lang_code', 'translation'), ]
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -55,7 +55,6 @@ admin.site.register(TranslatedField, TranslateFieldAdmin)
 class TranslationAdmin(admin.ModelAdmin):
     form = TranslationAdminForm
     list_display = ['original', 'language', 'translation', 'updated']
-    # fields = ['language', 'translation', 'updated','original', ]
     readonly_fields = ['updated', 'original', ]
     list_filter = [GenericRelationsRelatedOnly, AvaiableLanguages, 'field__field', EmptyFields, FuzzyOnly]
     list_editable = ['translation',]

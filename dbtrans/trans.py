@@ -16,41 +16,9 @@ DEFAULT_LANGUAGE = settings.LANGUAGE_CODE.lower()
 def default_action(fake_fields, field):
     """
     DEFINE WHAT ACTION TO DO WHEN THERE IS NO TRANSLATION
-    TRY TO GET TRANSLATION ON GOOGLE TRANSLATOR, IF NO ANSWER RETURN ORIGINAL
-    TO DISABLE GET TRANSLATION ON GOOGLE, SET online_translation TO False
-    :param fake_fields:
-    :param field:
-    :return:
+    Default action is returning the same value
     """
-    online_translation = True
-    """
-    #result_box
 
-    from urllib.request import Request, urlopen
-    headers = {'User-Agent': 'Mozilla/5.0'}
-
-
-    DEFAULT_LANGUAGE = 'pt-PT'
-
-# /
-
-    original = 'eu sou o fantástico'#fake_fields[DEFAULT_LANGUAGE]
-    enc = urllib.parse.quote(original)
-
-
-    url = 'https://translate.google.com/translate_a/single?client=t&sl=%s&tl=%s&hl=pt-PT&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&kc=6&tk=904419.755999&q=%s' % (
-        DEFAULT_LANGUAGE.split('-')[0],
-        'fr-FR'.split('-')[0],
-        "eu%20sou%20este%20d"
-    )
-
-
-
-
-    r = requests.get(url, headers=headers)
-    translation = r.text.split('"')[1]
-    print(translation)
-    """
     return getattr(fake_fields[field.attname], DEFAULT_LANGUAGE)
 
 
